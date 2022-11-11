@@ -12,7 +12,7 @@ import dao.UserDao;
 /**
  * Servlet implementation class ListUser
  */
-@WebServlet("/list")
+@WebServlet({ "" , "/list" })
 public class ListUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private final static String USERS_LIST_VIEW = "/WEB-INF/listUsers.jsp";   

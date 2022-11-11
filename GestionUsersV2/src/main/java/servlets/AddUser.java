@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import beans.User;
 import dao.UserDao;
+import form.AddUserForm;
 
 @WebServlet("/add")
 public class AddUser extends HttpServlet {
@@ -22,19 +23,22 @@ public class AddUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nom = request.getParameter("lastName");
-		String prenom = request.getParameter("firstName");
-		String login = request.getParameter("login");
-		String password = request.getParameter("password");
+		AddUserForm form = new AddUserForm(request);
+		form.add();
 		
-		try {
-			User user = new User(nom, prenom, login, password);
-			UserDao.addUser(user);
-			} catch (Exception e){
-				
-			}
+	    
+	    request.setAttribute("user", form.getUser());
+		request.setAttribute("status", form.isStatus());
+		request.setAttribute("statusMessage", form.getStatusMessage());
+		request.setAttribute("erreurs", form.getErreurs());
+		request.getServletContext().getRequestDispatcher(ADD_VIEW).forward(request, response);
 		
-		response.sendRedirect(request.getContextPath() + "/list");
+		 if (!form.isStatus()) {
+		       response.sendRedirect(request.getContextPath() + "/list");
+		   } else {
+		
+		//response.sendRedirect(request.getContextPath() + "/list");
+		  }
 	}
 
 }

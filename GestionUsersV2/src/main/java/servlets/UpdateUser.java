@@ -7,8 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-
-import beans.InvalidDataException;
 import beans.User;
 import dao.UserDao;
 
@@ -30,7 +28,7 @@ public class UpdateUser extends HttpServlet {
 				request.setAttribute("user", user);
 				getServletContext().getRequestDispatcher(UPDATE_VIEW).forward(request, response);
 
-			} catch (NumberFormatException | InvalidDataException e) {
+			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

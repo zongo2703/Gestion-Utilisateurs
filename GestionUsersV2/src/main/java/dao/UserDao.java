@@ -1,8 +1,6 @@
 package dao;
 
 import java.util.ArrayList;
-
-import beans.InvalidDataException;
 import beans.User;
 
 public class UserDao {
@@ -31,7 +29,7 @@ public class UserDao {
     public static boolean delete(int id) {
     	for( User user : users) {
     		if(user.getId() == id) {
-    			users.remove(id);
+    			users.remove(user);
     			return true;
     		}
     	}
@@ -51,7 +49,7 @@ public class UserDao {
     	return false;
     }
     
-    public static User getUser(int id) throws InvalidDataException {
+    public static User getUser(int id)  {
     	for( User user : users) {
     		if(user.getId() == id) {
     			return user;

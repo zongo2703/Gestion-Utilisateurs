@@ -6,10 +6,7 @@ public class User {
     
 	public User() {}
 	
-	public User( String nom, String prenom, String login, String password) throws InvalidDataException {
-		if (nom == null || prenom == null || login == null || password == null) {
-			throw new InvalidDataException(" Données saisies incorrectes !");
-		}
+	public User( String nom, String prenom, String login, String password) {
 		
 		this.nom = nom;
 		this.prenom = prenom;
